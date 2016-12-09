@@ -12,6 +12,7 @@
     <% end %>
 
     <% if !micropost.nil? %>
+      <% if logged_in? %>
       <section class="comment_form">
 
          <%= form_for Comment.new do |f| %>
@@ -23,6 +24,7 @@
           <%= f.submit "Post", class: "btn btn-primary" %>
         <% end %>
       </section>
+      <% end %>
     <% end %>
 
 </li>
