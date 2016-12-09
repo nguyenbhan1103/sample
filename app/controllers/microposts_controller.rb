@@ -17,10 +17,21 @@ class MicropostsController < ApplicationController
   		
   	end
 
+    
+
   	private
 
     	def micropost_params
       		params.require(:micropost).permit(:content)
     	end
+
+
+      # Before filters
+
+      # Confirms the correct user.
+      def correct_micropost
+        @micropost = Micropost.find(params[:id])
+        redirect_to(root_url) unless current_micropost?(@micropost)
+      end
 
 end
